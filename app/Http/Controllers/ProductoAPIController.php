@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Producto;
+
 use Illuminate\Http\Request;
+use App\Producto;
 
 class ProductoAPIController extends Controller
 {
     ////Entrega una consulta , listamos en un apartado HTML todos los elementos o productos
     public function index(){
-        $productos = Producto::get()->except(["create_at", "updated_at"]);
+        $productos = Producto::get([]);
         ;
 
         if (!$products) {

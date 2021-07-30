@@ -1,15 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use App\Producto;
+use Illuminate\Http\Request;
+
 
 class ProductoAPIController extends Controller
 {
     ////Entrega una consulta , listamos en un apartado HTML todos los elementos o productos
     public function index(){
-        $productos = Producto::get([]);
+        $productos = Producto::get(
+           [
+            "id",
+            "name",
+            "description"
+           ]
+        );
         ;
 
         if (!$products) {
@@ -20,13 +26,14 @@ class ProductoAPIController extends Controller
         } else {
             return response()->json([
                 'success' => true,
-                'products' => $products,
+                'producto' => $productos,
             ], 200);
         }
 
 
 
     }
+
     public function store(Request $request)
     {
         $producto = new Producto();

@@ -8,8 +8,9 @@ class ProductoAPIController extends Controller
 {
     ////Entrega una consulta , listamos en un apartado HTML todos los elementos o productos
     public function index(){
-        $productos = Producto::get();
-        
+        $productos = Producto::get()->except(["create_at", "updated_at"]);
+        ;
+
         if (!$products) {
             return response()->json([
                 'success' => false,

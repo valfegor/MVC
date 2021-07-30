@@ -13,12 +13,12 @@ class ProductoAPIController extends Controller
            [
             "id",
             "name",
-            "description"
+            "description",
+            "price"
            ]
         );
-        ;
 
-        if (!$products) {
+        if (!$productos) {
             return response()->json([
                 'success' => false,
                 'message' => 'Sorry, Not Acceptable.',
@@ -46,5 +46,6 @@ class ProductoAPIController extends Controller
         $producto->save();
         return redirect('producto');
 
+        if ($producto->save())             return response()->json([                 'success' => true,                 'sensor' => $producto,             ], 201);         else             return response()->json([                 'success' => false,                 'message' => 'Sorry, product could not be added.'             ], 500); 
     }
 }

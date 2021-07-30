@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//se crea un servicio  , 1 que guarde y otro que liste
+Route::get('producto','ProductoAPIController@index')->name("product-list");
